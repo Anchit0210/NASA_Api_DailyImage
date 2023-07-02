@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>NASA Image of the Day</title>
+</head>
+<body>
+  <h1>NASA Image of the Day Is This - </h1>
+  <div id="image-container"></div>
+
+  <script>
+
+    const imageContainer = document.getElementById('image-container');
+    // Fetch NASA image of the day
+   fetch('https://api.nasa.gov/planetary/apod?api_key=PwJyh81McsGHGDgAfnTpOF8hqc3NzIgVTS7upeYY')
+   .then(response => response.json())
+   .then(data => {
+      const image = document.createElement('img');
+      image.src = data.url;
+      image.alt = data.title;
+      imageContainer.appendChild(image);
+  })
+  .catch(error => console.log(error));
+
+  </script>
+</body>
+</html>
